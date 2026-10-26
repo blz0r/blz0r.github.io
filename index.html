@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://blz0r.github.io/">
+  <meta property="og:title" content="Shamsul Khan — QA Automation Portfolio">
+  <meta property="og:description" content="QA frameworks, browser and API tests, Android automation, and verified test reports.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://blz0r.github.io/">
+  <meta name="description" content="Shamsul Khan's QA and software development portfolio: a reusable automation framework, verified CI runs, test reports, and selected learning projects.">
+  <title>Shamsul Khan — QA & Software Development</title>
+  <link rel="stylesheet" href="qa.css">
+  <script src="projects.js" defer></script>
+  <script src="script.js" defer></script>
+  <script src="preview-help.js" defer></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="wordmark" href="#top" aria-label="Shamsul Khan, home">Shamsul Khan</a>
+    <nav aria-label="Main navigation"><a href="#framework">QA framework</a><a href="#evidence">Test results</a><a href="#about">About me</a></nav>
+    <a class="header-link" href="https://github.com/blz0r" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">QA AUTOMATION / SDET FOCUS</p>
+        <h1 id="hero-title">Shamsul Khan</h1>
+        <p class="hero-intro">I focus on test automation, API testing, and clear reporting. My work includes reusable frameworks in TypeScript, JavaScript, Java, and Python, with CI pipelines and Android automation.</p>
+        <div class="hero-actions"><a class="button button-dark" href="#framework">View QA project <span aria-hidden="true">↘</span></a><a class="under-link" href="#evidence">View test results</a></div>
+      </div>
+      <aside class="hero-ledger" aria-label="QA project overview">
+        <h2>QA project overview</h2>
+        <dl class="overview-list">
+          <div><dt>Browser and API testing</dt><dd>WebdriverIO, Selenium, Cucumber, TestNG, pytest, and REST Assured.</dd></div>
+          <div><dt>Android automation</dt><dd>Appium checks verified on a GitHub-hosted Android emulator.</dd></div>
+          <div><dt>CI and reporting</dt><dd>GitHub Actions, Allure reports, JUnit results, and failure screenshots.</dd></div>
+        </dl>
+        <a class="quiet-link" href="#evidence">View verified results →</a>
+      </aside>
+      <div class="hero-foot"><span class="mono">01 / FEATURED WORK</span><p>Automation frameworks, test results, and supporting documentation.</p><span class="scroll-arrow" aria-hidden="true">↓</span></div>
+    </section>
+
+    <section class="framework-section" id="framework" aria-labelledby="framework-title">
+      <div class="wrap">
+        <div class="section-heading"><div><p class="eyebrow">FEATURED PROJECT</p><h2 id="framework-title">Cross-language QA automation framework</h2></div><p class="section-intro">A reusable template for browser, API, and Android testing. The language versions use the same practice web app and API.</p></div>
+        <div class="framework-intro"><p>TypeScript for readable browser scenarios. JavaScript for focused API checks. Java and Python for the same testing ideas in different tools. The structure keeps page actions, assertions, configuration, and reports easy to find.</p><div class="framework-links"><a class="button button-teal" href="resources/USAGE_GUIDE.html">Read setup guide <span aria-hidden="true">↓</span></a><a class="under-link" href="#code-panel">View code examples <span aria-hidden="true">↗</span></a></div></div>
+        <div class="code-workbench">
+          <div class="code-sidebar"><span class="mono">CODE EXAMPLES</span><h3>Compare the implementations</h3><p>Select a language to view an example from the test suite.</p><div class="code-legend"><span class="status-dot" aria-hidden="true"></span><span id="code-stack">WebdriverIO · Cucumber</span></div></div>
+          <div class="code-main">
+            <div class="language-tabs" role="tablist" aria-label="Test code language">
+              <button type="button" id="tab-typescript" role="tab" aria-selected="true" aria-controls="code-panel" tabindex="0" data-language="typescript">TypeScript</button>
+              <button type="button" id="tab-javascript" role="tab" aria-selected="false" aria-controls="code-panel" tabindex="-1" data-language="javascript">JavaScript</button>
+              <button type="button" id="tab-java" role="tab" aria-selected="false" aria-controls="code-panel" tabindex="-1" data-language="java">Java</button>
+              <button type="button" id="tab-python" role="tab" aria-selected="false" aria-controls="code-panel" tabindex="-1" data-language="python">Python</button>
+            </div>
+            <div id="code-panel" role="tabpanel" aria-labelledby="tab-typescript" tabindex="0"><div class="code-file"><span id="code-filename">tests/steps/login.steps.ts</span><span class="mono">SOURCE EXCERPT</span></div><pre><code id="code-example">Then('I see the welcome message {string}',
+  async (message: string) => {
+    await expect(DashboardPage.panel)
+      .toBeDisplayed();
+    await expect(DashboardPage.welcome)
+      .toHaveText(message);
+  });</code></pre><p class="code-caption" id="code-caption">Assert the dashboard is visible and its welcome message matches the requirement.</p></div>
+          </div>
+        </div>
+        <div class="capability-line" aria-label="Framework features"><span>Page objects</span><span>Data-driven cases</span><span>JSON schema checks</span><span>Failure screenshots</span><span>JUnit + Allure</span><span>GitHub Actions</span></div>
+        <p class="origin-note"><strong>Where it comes from.</strong> This is a newly written, generic reconstruction informed by my earlier QA work and coursework. The app, accounts, selectors, and data are synthetic. Employer code, endpoints, credentials, and reports are not included. Developed with Codex assistance; third-party tools are credited in the starter.</p>
+        <a class="quiet-link" href="https://github.com/blz0r/qa-automation-portfolio" target="_blank" rel="noopener noreferrer">View source repository <span aria-hidden="true">↗</span> <span class="link-note">Private · authorized GitHub sign-in required</span></a>
+      </div>
+    </section>
+
+    <section class="evidence-section wrap" id="evidence" aria-labelledby="evidence-title">
+      <div class="section-heading"><div><p class="eyebrow">VERIFICATION</p><h2 id="evidence-title">Test results and reports</h2></div><p class="section-intro">Saved results from completed GitHub Actions runs. Each report shows its own scope, rather than one combined coverage claim.</p></div>
+      <div class="results-heading"><span class="mono">VERIFIED RUNS / OCT 25, 2026</span><a class="under-link" href="resources/VALIDATION.html">Full verification record <span aria-hidden="true">↗</span></a></div>
+      <div class="results-table-wrap"><table class="results-table"><caption class="sr-only">Verified QA suites, results, reports and original GitHub Actions runs</caption><thead><tr><th scope="col">Suite</th><th scope="col">Tools & scope</th><th scope="col">Result</th><th scope="col">Inspect</th></tr></thead><tbody>
+        <tr><th scope="row"><span class="suite-index">01</span> Web + API</th><td>TypeScript / WebdriverIO / Cucumber<br><span>JavaScript / Node test runner</span></td><td><span class="pass-mark">✓</span><strong>3 browser + 7 API</strong><span class="result-sub">All passed</span></td><td><a href="reports/web/index.html">Allure: 3 browser <span aria-hidden="true">↗</span></a><a class="run-link" href="https://github.com/blz0r/qa-automation-portfolio/actions/runs/40269483985" target="_blank" rel="noopener noreferrer">CI run · sign-in required</a></td></tr>
+        <tr><th scope="row"><span class="suite-index">02</span> Java</th><td>Selenium / Cucumber / TestNG<br><span>REST Assured</span></td><td><span class="pass-mark">✓</span><strong>10 tests</strong><span class="result-sub">All passed</span></td><td><a href="reports/java/index.html">Open Allure report <span aria-hidden="true">↗</span></a><a class="run-link" href="https://github.com/blz0r/qa-automation-portfolio/actions/runs/40269484020" target="_blank" rel="noopener noreferrer">CI run · sign-in required</a></td></tr>
+        <tr><th scope="row"><span class="suite-index">03</span> Python</th><td>pytest / Requests / JSON Schema<br><span>Selenium / unittest bridge / Ruff</span></td><td><span class="pass-mark">✓</span><strong>14 tests</strong><span class="result-sub">All passed</span></td><td><a href="reports/python/index.html">Open Allure report <span aria-hidden="true">↗</span></a><a class="run-link" href="https://github.com/blz0r/qa-automation-portfolio/actions/runs/40269484020" target="_blank" rel="noopener noreferrer">CI run · sign-in required</a></td></tr>
+        <tr><th scope="row"><span class="suite-index">04</span> Android</th><td>Appium / Android API 35 emulator<br><span>Third-party ApiDemos training app</span></td><td><span class="pass-mark">✓</span><strong>2 scenarios</strong><span class="result-sub">Corrected run passed</span></td><td><a href="reports/android/index.html">Open Allure report <span aria-hidden="true">↗</span></a><a class="run-link" href="https://github.com/blz0r/qa-automation-portfolio/actions/runs/40269936589" target="_blank" rel="noopener noreferrer">CI run · sign-in required</a></td></tr>
+      </tbody></table></div>
+      <div class="evidence-notes"><p><strong>What the numbers mean.</strong> Tests overlap across language versions. Passing results demonstrate execution of these suites, not distinct requirements or production coverage. JavaScript API results are in JUnit, so the web Allure report contains the 3 browser scenarios.</p><p><strong>Cloud status.</strong> BrowserStack is configured as an opt-in example and has not been run. The Android result above comes from a GitHub-hosted emulator, not BrowserStack.</p></div>
+
+      <div class="process-heading"><p class="eyebrow">TEST PROCESS</p><h3>Requirements, execution, and investigation</h3></div>
+      <div class="process-grid">
+        <details class="process-step"><summary><span class="step-number">01</span><span>Define the check<small>Start with observable behavior</small></span><span class="expand-icon" aria-hidden="true">+</span></summary><div class="step-content"><p>A valid demo user should see their two tasks and be able to sign out. An invalid password should show an error and leave the dashboard hidden.</p><p>Gherkin scenarios express those outcomes. Page objects own the selectors and actions; steps hold the assertions.</p><a href="resources/USAGE_GUIDE.html">See the test structure <span aria-hidden="true">↗</span></a></div></details>
+        <details class="process-step"><summary><span class="step-number">02</span><span>Run & preserve<small>Make the evidence inspectable</small></span><span class="expand-icon" aria-hidden="true">+</span></summary><div class="step-content"><p>GitHub Actions runs the synthetic fixtures and saves JUnit, Allure, and diagnostic artifacts. Artifact upload runs even if a test fails.</p><p>The downloaded CI artifacts were checked against their hashes. The reports linked here were generated from those saved results.</p><a href="resources/VALIDATION.html">Read the run record <span aria-hidden="true">↗</span></a></div></details>
+        <details class="process-step"><summary><span class="step-number">03</span><span>Diagnose & verify<small>Use a failure to find the cause</small></span><span class="expand-icon" aria-hidden="true">+</span></summary><div class="step-content"><p>The first Android run caught a locator error in the automation. Logs and the saved screenshot helped separate a test problem from an app defect.</p><p>After correcting the selector strategy, a new run tested the changed commit and passed both Android scenarios.</p><a href="#failure-example">Follow the diagnosis <span aria-hidden="true">↓</span></a></div></details>
+      </div>
+
+      <article class="failure-story" id="failure-example" aria-labelledby="failure-title">
+        <div class="failure-copy"><p class="eyebrow"><span class="amber-dot" aria-hidden="true"></span> A real automation failure</p><h3 id="failure-title">Android test failure and resolution</h3><p>The first Android CI run reached the ApiDemos screen, then the text-entry scenario stopped with an invalid CSS selector. The other scenario passed.</p><div class="selector-change"><div><span>BEFORE · CSS INTERPRETATION</span><code>#io.appium.android.apis:id/username_edit</code></div><div><span>AFTER · NATIVE RESOURCE ID</span><code>id=io.appium.android.apis:id/username_edit</code></div></div><p>The explicit native locator fixed the parsing error. The corrected commit passed <strong>2 of 2 scenarios</strong>. This was a defect in the test, not a confirmed ApiDemos defect.</p><details class="diagnostic-details"><summary>What the artifacts established</summary><p>The screenshot established which screen the test had reached. The error identified the selector strategy. A fresh run of the changed commit established that the correction worked. The initial failed result stays separate from the passing evidence.</p><a href="https://github.com/blz0r/qa-automation-portfolio/actions/runs/40269534279" target="_blank" rel="noopener noreferrer">Initial failed run · private, sign-in required <span aria-hidden="true">↗</span></a></details><a class="under-link" href="resources/DEBUGGING_EXAMPLE.html">Read the debugging notes <span aria-hidden="true">↗</span></a></div>
+        <figure class="failure-figure"><div class="screenshot-label"><span class="mono">SAVED FAILURE ATTACHMENT</span><a href="assets/android-failure.png" aria-label="Open full Android failure screenshot">Full image <span aria-hidden="true">↗</span></a></div><a class="screenshot-link" href="assets/android-failure.png"><img src="assets/android-failure.png" alt="Saved ApiDemos Android screen at the point of the initial automation failure." loading="lazy" width="1080" height="1920"></a><figcaption>Initial failed run · ApiDemos training app.<br>A diagnostic attachment, not a passing result or employer screenshot.</figcaption></figure>
+      </article>
+    </section>
+
+    <section class="other-section" id="other-work" aria-labelledby="other-title"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">Outside the main framework</p><h2 id="other-title">Other projects</h2></div><p class="section-intro">Earlier QA practice, Python fundamentals, and machine learning coursework.</p></div><div class="project-list">
+      <article class="project-row"><span class="project-number mono">01 / QA</span><div><h3>CastleHillGaming</h3><p>A Java, Selenium, and Cucumber coding-test project. Earlier practice with readable browser tests and a reusable test structure.</p><div class="project-tags"><span>Java</span><span>Selenium</span><span>Cucumber</span></div></div><div class="project-actions"><button type="button" class="under-link project-details" data-project="castlehill" hidden>Project notes <span aria-hidden="true">+</span></button><a class="quiet-link" href="https://github.com/blz0r/CastleHillGaming" target="_blank" rel="noopener noreferrer">Public repository <span aria-hidden="true">↗</span></a></div></article>
+      <article class="project-row"><span class="project-number mono">02 / PYTHON</span><div><h3>A Python calculator</h3><p>A small calculator project for practicing program structure, input handling, and arithmetic in Python.</p><div class="project-tags"><span>Python</span><span>Programming fundamentals</span></div></div><div class="project-actions"><button type="button" class="under-link project-details" data-project="calculator" hidden>Project notes <span aria-hidden="true">+</span></button><a class="quiet-link" href="https://github.com/blz0r/Calculator" target="_blank" rel="noopener noreferrer">Private repository <span aria-hidden="true">↗</span><small>Authorized sign-in required</small></a></div></article>
+      <article class="project-row"><span class="project-number mono">03 / LEARNING</span><div><h3>Machine learning coursework</h3><p>Regression, online purchase classification, and TrashNet image classification. Practice with preparing data, comparing models, and interpreting class-level results.</p><div class="project-tags"><span>Python</span><span>Neural networks</span><span>Model evaluation</span></div></div><div class="project-actions"><button type="button" class="under-link project-details" data-project="machine-learning" hidden>Project notes <span aria-hidden="true">+</span></button><span class="project-context">Coursework · no performance claims</span></div></article>
+    </div></div></section>
+
+    <section class="about-section wrap" id="about" aria-labelledby="about-title"><div><p class="eyebrow">A little about me</p><h2 id="about-title">About me</h2></div><div class="about-copy"><p class="about-lead">My focus is QA automation and SDET work. I’m studying software development and building on earlier experience with test automation.</p><p>I’m interested in the work between a requirement and a dependable result: choosing a useful check, organizing it so someone else can follow it, and investigating what happens when it fails.</p><p>The featured framework is a new practice project informed by earlier work. Its documentation includes setup instructions, verified runs, and the limits of the tests.</p><a class="under-link" href="https://github.com/blz0r" target="_blank" rel="noopener noreferrer">Find my work on GitHub <span aria-hidden="true">↗</span></a></div></section>
+  </main>
+  <footer class="site-footer wrap"><a class="wordmark" href="#top">Shamsul Khan</a><p>QA automation · Software development · Selected coursework</p><a class="quiet-link" href="THIRD_PARTY_NOTICES.md">Credits</a><a class="back-top" href="#top">Back to top <span aria-hidden="true">↑</span></a></footer>
+  <dialog class="project-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><span class="mono" id="dialog-category">PROJECT NOTES</span><button type="button" class="dialog-close" aria-label="Close project notes">Close <span aria-hidden="true">×</span></button></div><div class="dialog-content"><h2 id="dialog-title"></h2><p class="dialog-lead" id="dialog-summary"></p><h3>The work</h3><p id="dialog-work"></p><h3>The context</h3><p id="dialog-context"></p></div></dialog>
+  <noscript><p class="noscript-note wrap">The project and evidence links work without JavaScript. Enable JavaScript to switch code languages and open additional project notes.</p></noscript>
+</body>
+</html>

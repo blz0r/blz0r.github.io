@@ -1,0 +1,60 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Example test plan and traceability — Shamsul Khan</title><link rel="stylesheet" href="../qa.css"></head><body><header class="site-header wrap"><a class="wordmark" href="../index.html">Shamsul Khan</a><a href="https://github.com/blz0r/qa-automation-portfolio">QA source (private)</a></header><main class="guide wrap"><h1>Example test plan and traceability</h1>
+<p>Scope: synthetic login, dashboard and stateless JSON API. Data is invented. This plan describes the starter's intended coverage; use VALIDATION.md for observed run evidence.</p>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Browser coverage</th>
+<th>API coverage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Valid credentials reveal the demo dashboard</td>
+<td>All three language versions</td>
+<td>Successful login returns the expected user without a password</td>
+</tr>
+<tr>
+<td>Invalid credentials show a useful error</td>
+<td>All three versions</td>
+<td>Wrong credentials return 401</td>
+</tr>
+<tr>
+<td>Sign-out returns to a cleared login form</td>
+<td>All three versions</td>
+<td>Not applicable: fixture does not model server sessions</td>
+</tr>
+<tr>
+<td>A consumer can read the tasks contract</td>
+<td>Task display scenario</td>
+<td>Status/body checks; Python also validates JSON Schema</td>
+</tr>
+<tr>
+<td>Missing input is rejected</td>
+<td>Browser form validation is limited</td>
+<td>Missing fields return 400</td>
+</tr>
+<tr>
+<td>Malformed JSON is rejected</td>
+<td>Not applicable</td>
+<td>Invalid JSON returns 400</td>
+</tr>
+<tr>
+<td>Service readiness and unknown paths are visible</td>
+<td>Fixture readiness check</td>
+<td>Health 200, missing route 404</td>
+</tr>
+</tbody>
+</table>
+<h2>Risk notes</h2>
+<ul>
+<li>The demo has no database, tokens, role permissions or persistent sessions. Do not infer real authentication security from these tests.</li>
+<li>Only local headless Chrome was verified. Optional cloud/device configurations are not executed coverage.</li>
+<li>A failed browser test should produce an actionable assertion, screenshot and report attachment. A controlled failure was used to verify this path, separate from passing regression results.</li>
+<li>Real applications require separate data/setup, authorization, concurrency, accessibility, performance and recovery decisions.</li>
+</ul>
+<h2>Reuse this plan</h2>
+<p>For each real feature, record the requirement, risk, test data, automated/manual case, target environment, expected outcome, actual result and evidence link. Add edge cases based on the application rather than increasing test count for its own sake. Mark blocked and unexecuted checks honestly.</p>
+<h2>Release review</h2>
+<p>Record the commit, dependency lockfiles, runtime/browser versions, command, exit status and report location. Separate controlled failure-proof runs from regression results. Inspect artifacts before sharing and record known gaps rather than treating a green workflow as proof of complete quality.</p>
+</main><footer class="site-footer wrap"><a href="../index.html#framework">← Back to portfolio</a></footer></body></html>

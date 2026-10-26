@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BrowserStack run guide — Shamsul Khan</title><link rel="stylesheet" href="../qa.css"></head><body><header class="site-header wrap"><a class="wordmark" href="../index.html">Shamsul Khan</a><a href="https://github.com/blz0r/qa-automation-portfolio">QA source (private)</a></header><main class="guide wrap"><h1>BrowserStack run guide</h1>
+<p>The manual <code>BrowserStack QA (manual)</code> workflow runs the existing TypeScript/Cucumber login checks in Chrome on Windows 11. It hosts the synthetic fixture on a disposable GitHub runner and opens a BrowserStack Local tunnel restricted to <code>127.0.0.1:4173</code>. It closes the tunnel and fixture after the run. Your personal PC does not run the tunnel.</p>
+<p>An active BrowserStack Automate account or eligible trial is required. No account, subscription, or purchase is created by this project. Runs can consume both BrowserStack allowance and private-repository Actions minutes. The workflow does not run on pushes or pull requests.</p>
+<ol>
+<li>In GitHub repository Settings → Secrets and variables → Actions, add <code>BROWSERSTACK_USERNAME</code> and <code>BROWSERSTACK_ACCESS_KEY</code> as repository secrets, using the values from your BrowserStack account. Never commit keys or paste them into issues, reports, or chat.</li>
+<li>Open Actions → BrowserStack QA (manual) → Run workflow.</li>
+<li>Inspect the job result and download <code>browserstack-qa-reports</code>. The Allure HTML and JUnit files must agree with the job outcome.</li>
+<li>In BrowserStack Automate, find the build named <code>QA portfolio Actions &lt;run ID&gt;</code>. Inspect session status, video and logs. A successful connection alone is not a passing test.</li>
+</ol>
+<p>The tunnel binary is downloaded from BrowserStack's official Linux download endpoint during the run. Raw tunnel logs stay temporary and are not uploaded, because provider logs may contain account details. Synthetic app test reports are uploaded with seven-day retention.</p>
+<p>The existing <code>npm run test:cloud</code> also supports an authorized external HTTPS deployment through <code>CLOUD_BASE_URL</code>, without tunnel mode. The manual workflow uses its own fixture and explicit tunnel identity.</p>
+<p>Status: integration prepared; no cloud test success is claimed until a real run and provider sessions have been verified.</p>
+<p>References: <a href="https://www.browserstack.com/docs/local-testing/binary-params">BrowserStack Local flags</a>, <a href="https://webdriver.io/docs/cloudservices">WebdriverIO cloud services</a>, <a href="https://www.browserstack.com/docs/automate/selenium/getting-started/nodejs/webdriverio/local-testing">BrowserStack local testing</a>.</p>
+</main><footer class="site-footer wrap"><a href="../index.html#framework">← Back to portfolio</a></footer></body></html>

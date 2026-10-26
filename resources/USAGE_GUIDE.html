@@ -1,0 +1,160 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Using and adapting the QA template — Shamsul Khan</title><link rel="stylesheet" href="../qa.css"></head><body><header class="site-header wrap"><a class="wordmark" href="../index.html">Shamsul Khan</a><a href="https://github.com/blz0r/qa-automation-portfolio">QA source (private)</a></header><main class="guide wrap"><h1>Using and adapting the QA template</h1>
+<h2>Choose a version</h2>
+<p>All three versions exercise the same original synthetic login/dashboard and HTTP API. They demonstrate the same core acceptance requirements through different languages and runners. Python includes additional parameterized and unittest-style cases, so test counts differ.</p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Main tools</th>
+<th>First commands</th>
+<th>Guide</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TypeScript / JavaScript</td>
+<td>WebdriverIO, Cucumber, Node test runner, TypeScript</td>
+<td><code>npm ci</code>, <code>npm run typecheck</code>, <code>npm test</code></td>
+<td>Root README</td>
+</tr>
+<tr>
+<td>Java</td>
+<td>Selenium, Cucumber, TestNG, REST Assured, Maven</td>
+<td>Start <code>npm run fixture</code>, then <code>cd java</code> and <code>mvn clean test</code></td>
+<td>java/README.md</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>Selenium, pytest, Requests, JSON Schema, unittest-style assertions, Ruff</td>
+<td>Create a venv, install python/requirements.txt, run <code>python -m pytest</code> from python/</td>
+<td>python/README.md</td>
+</tr>
+</tbody>
+</table>
+<p>Use Node.js 24 and Chrome for the shared fixture and primary stack. Java needs a JDK 17+ and Maven 3.8+; Python needs Python 3.12+. Select a supported Node version before installing npm dependencies. Do not solve a version mismatch by disabling the engine check.</p>
+<h2>First run</h2>
+<ol>
+<li>Extract the source package into a new project folder. Keep the whole folder structure because Java and Python share <code>fixtures/</code>.</li>
+<li>Follow one version's README and run its default local suite. No BrowserStack account or mobile device is needed for default tests.</li>
+<li>Inspect the XML/JSON results and generate its Allure HTML report from the root:</li>
+</ol>
+<pre><code class="language-text">npm run report:web
+npm run report:java
+npm run report:python
+</code></pre>
+<p>Run a report command only after the corresponding tests. The Allure CLI is pinned in the npm lockfile. HTML outputs are under <code>reports/allure-web</code>, <code>reports/allure-java</code> and <code>reports/allure-python</code>, each with an <code>index.html</code>. Serve a generated directory locally when your browser restricts file-based navigation, for example <code>python -m http.server 8080 --bind 127.0.0.1 --directory reports/allure-python</code>.</p>
+<p>Keep reports for different stacks separate. Clear old raw results before collecting a fresh run; otherwise Allure can combine multiple runs. Root <code>npm run clean:reports</code> clears root reports; Java uses <code>mvn clean test</code>. For Python, remove only its generated <code>reports/allure-results</code> directory or choose a fresh <code>--alluredir</code> before rerunning. Do not remove source or fixture folders.</p>
+<h2>Adapt it for another application</h2>
+<ol>
+<li>Write the application's acceptance criteria in <code>TEST_PLAN.md</code> before changing selectors.</li>
+<li>Replace page-object selectors and actions in the chosen version. Prefer stable test IDs or accessible selectors; avoid brittle full XPath paths.</li>
+<li>Replace the synthetic account with dedicated test accounts supplied through your environment or secret store. Never put production passwords in feature examples, test IDs or parameter names.</li>
+<li>Update API paths, response contracts and assertions. The demo API is stateless and does not implement production authentication or a database.</li>
+<li>Test locally, inspect failures and record the actual environment and result. A configured integration is not evidence of a passed run.</li>
+<li>Review screenshots, logs and reports for private information before sharing them.</li>
+</ol>
+<h3>Add a browser scenario</h3>
+<ul>
+<li>TypeScript: add a Gherkin scenario under <code>tests/features</code>, implement reusable actions under <code>tests/pages</code>, then connect steps under <code>tests/steps</code>.</li>
+<li>Java: add a feature under <code>java/src/test/resources</code>, put selectors/actions in <code>pages</code>, and assertions/hooks in <code>steps</code>. The TestNG runner drives the Cucumber scenarios.</li>
+<li>Python: add a readable test under <code>python/tests/test_web.py</code> or a new test module, reusing page objects and the browser fixture. <code>tests/test_unittest_style.py</code> demonstrates older unittest assertion style inside pytest's fixture lifecycle; run it with pytest, not standalone unittest discovery.</li>
+</ul>
+<p>Use explicit waits for application state. Keep test isolation and cleanup in hooks/fixtures instead of copying setup into each case. The supplied credentials are public invented demo values only.</p>
+<h3>Add an API case</h3>
+<p>JavaScript uses Node's test runner and HTTP fetch, Java uses REST Assured/TestNG, and Python uses Requests/pytest with JSON Schema validation. Assert status and response meaning; avoid checking only that a response exists. Include invalid input, missing fields and unknown routes alongside successful requests.</p>
+<h2>CI workflow</h2>
+<ul>
+<li><code>local-qa.yml</code> checks TypeScript and runs JavaScript API plus Cucumber browser tests.</li>
+<li><code>cross-language.yml</code> runs separate Java and Python jobs. Java starts and cleans up the shared fixture; Python owns its fixture automatically.</li>
+<li>Jobs have read-only repository permissions and retain report artifacts even when tests fail. They do not publish the application or invoke cloud/mobile commands.</li>
+</ul>
+<p>To use on GitHub, create a repository from these reviewed source files, push a branch, and inspect its Actions results. Web/API, Java and Python jobs have passed in the private showcase repository; see <a href="VALIDATION.html">verified runs</a>. Before using a public repository, decide the license and review artifact visibility. Artifact retention is set to seven days in the examples.</p>
+<h2>Optional BrowserStack and Android</h2>
+<p>The TypeScript config includes guarded examples for an existing BrowserStack account and a local Appium/UiAutomator2 Android setup. See the root README and <code>.env.example</code> for the exact variables. BrowserStack remains unrun; the separate hosted Android workflow has passed two scenarios, as recorded in <a href="VALIDATION.html">validation</a>.</p>
+<p>For external BrowserStack runs, use a compatible authorized HTTPS target. The separate manual BrowserStack workflow uses a restricted tunnel to the synthetic fixture on its disposable runner; see <a href="BROWSERSTACK_QA.html">BrowserStack setup</a>. Cloud runs can consume provider allowance. The separate <a href="ANDROID_QA.html">Android workflow</a> runs Appium against the third-party ApiDemos sample on a disposable emulator. These manual workflows can consume private-repository Actions minutes. Local mobile runs still require an expendable test app/device and can reset the sample app.</p>
+<h2>Tool coverage and boundaries</h2>
+<table>
+<thead>
+<tr>
+<th>Tool or pattern</th>
+<th>Actual example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cucumber / Gherkin</td>
+<td>TypeScript and Java browser scenarios</td>
+</tr>
+<tr>
+<td>WebdriverIO / TypeScript</td>
+<td>Browser runner, typed page objects and configuration</td>
+</tr>
+<tr>
+<td>JavaScript / Node test</td>
+<td>Local API contract assertions</td>
+</tr>
+<tr>
+<td>Selenium</td>
+<td>Java and Python browser automation</td>
+</tr>
+<tr>
+<td>TestNG</td>
+<td>Java scenario execution and API checks</td>
+</tr>
+<tr>
+<td>REST Assured</td>
+<td>Java HTTP status/body checks</td>
+</tr>
+<tr>
+<td>Maven / Surefire</td>
+<td>Java dependency/build/test lifecycle and XML output</td>
+</tr>
+<tr>
+<td>pytest / parameterization</td>
+<td>Python test lifecycle and data-driven API cases</td>
+</tr>
+<tr>
+<td>unittest style</td>
+<td>Two Python compatibility examples using TestCase assertions</td>
+</tr>
+<tr>
+<td>Requests / JSON Schema</td>
+<td>Python HTTP checks and response-shape validation</td>
+</tr>
+<tr>
+<td>Ruff / TypeScript compiler</td>
+<td>Executed Python lint and TypeScript checks</td>
+</tr>
+<tr>
+<td>Allure</td>
+<td>Per-language results, steps, failure attachments and generated HTML</td>
+</tr>
+<tr>
+<td>JUnit-format XML</td>
+<td>CI-readable results from the runners; this does not mean all suites use the JUnit runner</td>
+</tr>
+<tr>
+<td>GitHub Actions</td>
+<td>Local-only workflow definitions; hosted execution still needs verification</td>
+</tr>
+<tr>
+<td>npm audit</td>
+<td>JavaScript dependency scan; not a Java/Python vulnerability audit</td>
+</tr>
+<tr>
+<td>BrowserStack / Appium</td>
+<td>BrowserStack configured but unrun; two Appium scenarios verified on a hosted Android emulator</td>
+</tr>
+</tbody>
+</table>
+<p>API checks here are functional checks, not a security penetration test. No load, accessibility, cross-browser matrix, production authentication or deployment coverage is claimed. Add those only with a real requirement and an executable example.</p>
+<h2>Upgrades and troubleshooting</h2>
+<ul>
+<li>Use <code>npm ci</code> with the lockfile. The Allure DOMPurify override is a narrow patch for an upstream dependency pin; review it when updating Allure.</li>
+<li>Cucumber 8's TestNG bridge is deprecated for future removal. Keep the tested pins until you deliberately migrate the runner and revalidate reports.</li>
+<li>If Selenium reports a CDP version warning, distinguish standard WebDriver checks from features that actually require CDP. The supplied Java cases use standard WebDriver commands.</li>
+<li>If Chrome cannot start, confirm Chrome is installed and try <code>CHROME_BINARY</code>. Check that the environment permits a local browser and loopback networking.</li>
+<li>If the fixture port is occupied, choose a free <code>FIXTURE_PORT</code> for the JavaScript fixture and point Java's BASE_URL at it. Python normally chooses an ephemeral port itself.</li>
+</ul>
+<p>Official references: <a href="https://webdriver.io/docs/gettingstarted/">WebdriverIO</a>, <a href="https://www.selenium.dev/documentation/webdriver/">Selenium</a>, <a href="https://cucumber.io/docs/">Cucumber</a>, <a href="https://testng.org/">TestNG</a>, <a href="https://rest-assured.io/">REST Assured</a>, <a href="https://docs.pytest.org/">pytest</a>, <a href="https://allurereport.org/docs/">Allure</a>, and <a href="https://docs.github.com/en/actions">GitHub Actions</a>.</p>
+</main><footer class="site-footer wrap"><a href="../index.html#framework">← Back to portfolio</a></footer></body></html>

@@ -1,0 +1,59 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Verification record — Shamsul Khan</title><link rel="stylesheet" href="../qa.css"></head><body><header class="site-header wrap"><a class="wordmark" href="../index.html">Shamsul Khan</a><a href="https://github.com/blz0r/qa-automation-portfolio">QA source (private)</a></header><main class="guide wrap"><h1>Verification record</h1>
+<p>Verified locally on Windows on 2026-10-25 (America/Chicago), using the synthetic fixture only.</p>
+<table>
+<thead>
+<tr>
+<th>Stack/check</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TypeScript compiler</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td>JavaScript API tests</td>
+<td>7 passed</td>
+</tr>
+<tr>
+<td>TypeScript Cucumber browser scenarios</td>
+<td>3 passed, 14 steps</td>
+</tr>
+<tr>
+<td>Java TestNG / Cucumber / REST Assured</td>
+<td>10 passed</td>
+</tr>
+<tr>
+<td>Python pytest / Selenium / Requests / unittest examples</td>
+<td>14 passed</td>
+</tr>
+<tr>
+<td>Python Ruff checks</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td>Allure HTML generation</td>
+<td>Passed for TypeScript (3), Java (10), Python (14)</td>
+</tr>
+<tr>
+<td>npm dependency audit</td>
+<td>0 reported vulnerabilities at verification time; Node dependency scope only</td>
+</tr>
+</tbody>
+</table>
+<p>Controlled failing browser checks verified screenshot creation and Allure attachments in all three browser stacks. Those deliberate failures were kept separate from the final passing report results. Allure summaries showed no retries or flaky results.</p>
+<p>Local tools included Node 24.22.1, Python 3.12.1, Java 18, Maven 3.8.4, and Chrome 156. The CI configuration selects Java 17.</p>
+<h2>GitHub-hosted verification</h2>
+<p>The private repository <code>blz0r/qa-automation-portfolio</code> ran commit <code>519ab6b7a810ddc397ae7759ee8dc79ab458dc10</code> on GitHub-hosted Ubuntu runners on 2026-10-25 (America/Chicago).</p>
+<ul>
+<li><a href="https://github.com/blz0r/qa-automation-portfolio/actions/runs/40269483985">Web and API run</a>: passed, including TypeScript checking, 7 JavaScript API tests, 3 Cucumber browser scenarios, HTML generation and artifact upload.</li>
+<li><a href="https://github.com/blz0r/qa-automation-portfolio/actions/runs/40269484020">Java and Python run</a>: both jobs passed. Java reported 10 tests with no failures/errors/skips; Python reported 14 passed. Both generated Allure HTML and uploaded artifacts.</li>
+</ul>
+<p>Downloaded artifacts passed ZIP integrity checks. Allure summaries reported 3/3 web, 10/10 Java and 14/14 Python passes. Artifact SHA-256 hashes matched GitHub's published digests. The Java Cucumber and API counts are subsets of its 10 tests, not extra tests to add again. GitHub report artifacts have seven-day retention; downloaded copies are retained separately with the portfolio evidence.</p>
+<p>The Java example pins its working Cucumber/TestNG integration. Cucumber 8 deprecates that runner for future removal; review migration guidance when upgrading. Selenium emitted a nearest-CDP-version warning with Chrome 156; the standard WebDriver checks passed, and no CDP-specific coverage is claimed.</p>
+<p>The <a href="https://github.com/blz0r/qa-automation-portfolio/actions/runs/40269936589">Android Appium run</a> passed on commit <code>f1cd356d19871bb689e239b90b2d90f426457dd3</code>. It ran Appium 3.8.0 and UiAutomator2 8.7.0 against the pinned ApiDemos sample on an Android API 35 emulator. JUnit and Allure both confirm <strong>2 tests passed</strong>, with no failures/errors/skips. HTML generation and artifact upload passed. Its downloaded artifact passed ZIP integrity and matched GitHub's SHA-256 digest.</p>
+<p>The first Android run found a native selector error and preserved a failure screenshot plus Allure attachment. That failure is retained separately; the corrected run uses explicit Android resource IDs. See <a href="DEBUGGING_EXAMPLE.html">the debugging example</a>. The passing rerun is a new run of the fixed commit, not a hidden retry or a passing result assigned to the initial failure.</p>
+<p>BrowserStack is configured but was not executed, per the owner's choice to avoid creating an account. Default-cloud and tunnel-target guard checks passed locally; provider connectivity remains unverified. Security, load, accessibility, production environments, and additional browsers were not validated.</p>
+<p>This is a newly written generic demonstration, not a claim that these exact tests or results were used at a previous employer. See <a href="PORTFOLIO_CONTEXT.html">portfolio context</a>.</p>
+</main><footer class="site-footer wrap"><a href="../index.html#framework">← Back to portfolio</a></footer></body></html>
