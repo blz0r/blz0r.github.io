@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Previous QA work: Java framework documentation — Shamsul Khan</title><meta name="description" content="Historical Java, Selenium and Cucumber framework documentation covering page objects, browser configuration and reusable steps."><link rel="stylesheet" href="../qa.css"></head>
+<body><a class="skip-link" href="#main">Skip to content</a><header class="site-header wrap"><a class="wordmark" href="../index.html">Shamsul Khan</a><a href="../index.html#previous-qa">Back to portfolio</a></header>
+<main id="main" class="guide wrap"><p class="eyebrow">PREVIOUS QA WORK / DOCUMENTATION</p><h1>Java test framework documentation</h1>
+<p>An earlier guide to organizing web application tests with Java, Selenium WebDriver, Cucumber, JUnit, and Maven. It shows how browser setup, readable scenarios, and reusable page actions fit together.</p>
+<p><a class="button button-teal" href="../assets/automated-testing-framework-documentation.pdf">Open documentation PDF</a></p>
+<h2>Framework structure</h2>
+<ul><li><strong>DriverFactory:</strong> creates WebDriver instances for the selected browser and closes them after use.</li><li><strong>SetupTest:</strong> reads configuration and manages browser setup and cookies, including a described Safari workaround.</li><li><strong>TestRunner:</strong> configures Cucumber execution, hooks, and scenario selection through tags.</li><li><strong>Step definitions:</strong> connect Gherkin scenarios to Java test actions.</li><li><strong>Page objects:</strong> keep page-specific interactions in a dedicated class.</li><li><strong>Maven:</strong> manages dependencies, compiler settings, and test execution plugins.</li></ul>
+<h2>Configuration and browser support</h2>
+<p>The guide separates browser choice, application URL, and scenario tags into <code>config.properties</code>. It lists Chrome, Firefox, Edge, and Safari as browser options. These are documented options; this addition does not claim a verified run on each browser.</p>
+<h2>Example workflow</h2>
+<p>The Learnmore example describes a video-playback check: open the page, locate the video, click play, and verify playback. Its page object exposes methods for thumbnail visibility, clicking play, and checking playback. The Java examples contain implementation placeholders.</p>
+<h2>What this work demonstrates</h2>
+<p>Framework organization, separation of responsibilities, reusable test steps, configurable execution, and technical documentation that explains how another tester can work with the structure.</p>
+<p>The guide also discusses parameterization, assertions, naming conventions, and logging/reporting as recommended practices. It does not include saved test reports or prove that those recommendations were all implemented.</p>
+<h2>Original document and context</h2>
+<p>The 11-page portfolio copy retains the original text; the cover logo has been removed. The original source file is preserved locally. Its file metadata records August 9, 2023; that date is not independently verified project history. This overview summarizes the document rather than rebuilding its code.</p>
+<p>This historical sample is separate from the portfolio's newer cross-language starter and its verified GitHub Actions results. No BrowserStack, CI, or Allure execution is claimed for this PDF.</p>
+<p><a href="../assets/automated-testing-framework-documentation.pdf" download>Download the documentation (PDF)</a></p>
+</main><footer class="site-footer wrap"><a href="../index.html#previous-qa">Back to portfolio</a></footer></body></html>
